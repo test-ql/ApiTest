@@ -1,0 +1,120 @@
+html body {
+    position: relative;
+    font-family: 'Montserrat', sans-serif;
+    justify-content: center;
+    margin-top: -1px;
+    height: 100%;
+}
+html body .header {
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ffffff;
+}
+html body .menu {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+html body .menu .menu-item {
+  position: relative;
+  cursor: pointer;
+}
+html body .menu .menu-item .wee {
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+    display: none;
+  left: 0;
+  bottom: 0;
+  transition: 0.75s;
+}
+html body .menu .menu-item .wee1 {
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+    display: none;
+  left: 0;
+  bottom: 0;
+  transition: 0.75s;
+}
+html body .menu .menu-item .wee2 {
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+    display: none;
+  left: 0;
+  bottom: 0;
+  transition: 0.75s;
+}
+html body .menu .menu-item .wee3 {
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+    display: none;
+  left: 0;
+  bottom: 0;
+  transition: 0.75s;
+}
+html body .menu .menu-item .wee4 {
+  height: 2px;
+  width: 100%;
+  background-color: #ffffff;
+  position: absolute;
+    display: none;
+  left: 0;
+  bottom: 0;
+  transition: 0.75s;
+}
+html body .menu .menu-item h6 {
+  margin: 0;
+  padding: 0 1rem 1.5rem;
+  font-size: 1rem;
+  color: #fffefe;
+  transition: 0.75s;
+}
+html body .menu .menu-item:hover h6 {
+  color: #ffffff;
+}
+html body .menu .current-menu-item h6 {
+  color: #ffffff;
+}
+.me {
+  position: absolute;
+  bottom: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.me a {
+  display: inline-block;
+  padding: 0.25rem;
+  margin: 0 0.25rem;
+  color: #ffffff;
+  font-size: 1.5rem;
+  transition: 0.75s;
+}
+.me a:hover {
+  color: #ffffff;
+}
+
+#page {
+    width: 960px;
+    margin: 0 auto;
+    padding-bottom: 60px;/*等于footer的高度*/
+}
+#footer {
+    text-align: center;
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+    height: 60px;/*脚部的高度*/
+    clear:both;
+    color: white;
+}
+

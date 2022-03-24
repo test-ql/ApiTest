@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>项目列表</title>
+</head>
+<body>
+    <h3 style="color: white">项目列表</h3>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>项目名称</th><th>创建人</th><th>备注</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for i in projects %}
+            <tr>
+                <td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
