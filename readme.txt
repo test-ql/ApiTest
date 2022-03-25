@@ -1,4 +1,1 @@
-Git is a version control system.
-Git is free software.
-1111dev
-2222dev333
+这是一个用来练手的接口测试平台，有需要的同学可以一起学习进步~~~~
