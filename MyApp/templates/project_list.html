@@ -6,7 +6,7 @@
 </head>
 <body>
 <br><br>
-<h3 style="padding-left: 10%;color: #ffffff">项目列表：<span style="font-size: small;color: #ffffff;">（这里显示全部项目,您可以进入他人的项目中查看）</span><button onclick="javascript:document.getElementById('add_project_div').style.display='block'" class="btn btn-info" style="position: absolute;left: -webkit-calc(90% - 85px)">新增项目</button></h3>
+<h3 style="padding-left: 10%;color: black">项目列表：<span style="font-size: small;color: black;">（这里显示全部项目,您可以进入他人的项目中查看）</span><button onclick="javascript:document.getElementById('add_project_div').style.display='block'" class="btn btn-info" style="position: absolute;left: -webkit-calc(90% - 85px)">新增项目</button></h3>
     <table class="table table-bordered" style="color: black;background-color: white;opacity: 0.8;width: 80%;margin-left: 10%">
         <thead style="text-align: center">
             <tr>
@@ -17,7 +17,7 @@
         <tr>
             {% for i in projects %}
             <tr>
-                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button class="btn btn-success">进入</button>&nbsp;&nbsp;<button onclick="delete_project('{{ i.id }}')" class="btn btn-danger">删除</button></td>
+                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button onclick="javascript:document.location.href='/apis/{{ i.id }}/'" class="btn btn-success">进入</button>&nbsp;&nbsp;<button onclick="delete_project('{{ i.id }}')" class="btn btn-danger">删除</button></td>
             </tr>
             {% endfor %}
 

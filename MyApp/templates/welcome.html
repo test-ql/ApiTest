@@ -4,13 +4,11 @@
     <meta charset="UTF-8">
     <title>测试平台</title>
 	<link rel="stylesheet" href="/static/201804061501/css/style.css">
-
-    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js" type="text/javascript"></script>
     <link rel="stylesheet" href="/static/bootstrap-3.4.1-dist/css/bootstrap.min.css" />
     <style>
         A.a1:link,A.a1:active,A.a1:visited{
             text-decoration: none;
-            color: #ffffff;
+            color: #000000;
         }
         A.a1:hover{
             color: #73b3f6;
@@ -25,7 +23,7 @@
     </style>
 
 </head>
-<body background="/static/homeback.png" style="background-size: cover">
+<body background='/static/homeback3.jpeg' style="background-size: cover" >
 
 <div style="float: right">
     <a href="/logout/">
@@ -58,17 +56,9 @@
 
 		</div>
 
-{#        <div id="footer">#}
-{#            <img src="/static/logo.png" alt="图片丢了" style="width: 100px;position: relative;top: 11px">#}
-{#        <span>友情链接:&nbsp;&nbsp;</span>#}
-{#        <a href="http://wiki.icinfo.co/pages/" target="_blank">wiki</a>&nbsp;&nbsp;#}
-{#        <a href="http://115.238.48.66:9180/login.jsp?permissionViolation=true" target="_blank">jira</a>&nbsp;&nbsp;#}
-{#        <a href="http://192.168.1.219:8081/login#/api/definition" target="_blank">MeterSphere</a>&nbsp;&nbsp;#}
-{#        <a href="https://icinfo.yuque.com/dashboard" target="_blank">语雀</a>#}
-{#        </div>#}
-
 	<script src="http://cdn.bootcss.com/jquery/1.11.0/jquery.min.js" type="text/javascript"></script>
 	<script>window.jQuery || document.write('<script src="/static/201804061501/js/jquery-1.11.0.min.js"><\/script>')</script>
+    <script src="/static/bootstrap-3.4.1-dist/js/bootstrap.min.js" type="text/javascript"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 		  // cool nav menu
@@ -90,16 +80,12 @@
 		});
 	</script>
 
-
-
 <div id = "page1">
 </div>
 
 <script>
     $('#page1').load('/child/'+'{{ whichHTML }}/{{ oid }}/')
 </script>
-
-
 
 <script>
     if("{{ whichHTML }}" == 'home.html'){
@@ -118,7 +104,6 @@
         $('.wee4').css('display','block')
     }
 </script>
-
 
 </body>
 </html>

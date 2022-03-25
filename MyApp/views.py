@@ -26,7 +26,7 @@ def api_help(request):
     return render(request,'welcome.html',{'whichHTML':'help.html','oid':''})
 
 # 不同页面返回不同数据：数据分发器
-def child_json(eid):
+def child_json(eid,oid=''):
     if eid == 'home.html':
         date = DB_home_href.objects.all()
         res = {"hrefs":date}
@@ -35,10 +35,22 @@ def child_json(eid):
         date = DB_project.objects.all()
         res = {"projects":date}
         return res
+    if eid == 'P_apis.html':
+        project = DB_project.objects.filter(id=oid)[0]
+        res = {'project':project}
+        return res
+    if eid == 'P_cases.html':
+        project = DB_project.objects.filter(id=oid)[0]
+        res = {'project':project}
+        return res
+    if eid == 'P_project_set.html':
+        project = DB_project.objects.filter(id=oid)[0]
+        res = {'project':project}
+        return res
 
 # 返回子页面
 def child(request,eid,oid):
-    res = child_json(eid)
+    res = child_json(eid,oid)
     return render(request,eid,res)
 
 # 主页
@@ -98,5 +110,31 @@ def add_project(request):
     DB_project.objects.create(name=project_name,remark=project_remark,other_user=project_otheruser,user=request.user.username)
     return HttpResponse('新增成功')
 
+# 接口库
+@login_required
+def open_apis(request,id):
+    project_id = id
+    return render(request,'welcome.html',{'whichHTML' : 'P_apis.html',"oid":project_id})
+
+# 用例设计
+@login_required
+def cases(request,id):
+    project_id = id
+    return render(request,'welcome.html',{'whichHTML' : 'P_cases.html',"oid":project_id})
+
+# 项目设置
+@login_required
+def project_set(request,id):
+    project_id = id
+    return render(request,'welcome.html',{'whichHTML' : 'P_project_set.html',"oid":project_id})
+
+# 保存项目设置
+def save_project_set(request,id):
+    project_id = id
+    name = request.GET['name']
+    remark = request.GET['remark']
+    other_user = request.GET['other_user']
+    DB_project.objects.filter(id=project_id).update(name=name,remark=remark,other_user=other_user)
+    return HttpResponse('保存成功')
 
 

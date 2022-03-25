@@ -34,6 +34,11 @@ urlpatterns = [
     path('project_list/', project_list),# 项目列表
     path('delete_project/', delete_project),# 删除项目
     path('add_project/', add_project),# 新增项目
+    re_path(r'^apis/(?P<id>.*)/$',open_apis),# 接口库
+    re_path(r'^cases/(?P<id>.*)/$',cases),# 用例设计
+    re_path(r'^project_set/(?P<id>.*)/$',project_set),# 项目设置
+    re_path(r'^save_project_set/(?P<id>.*)/$',save_project_set),# 保存项目设置
+
     path('interface/', interface),
 
 ]
