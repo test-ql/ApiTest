@@ -90,6 +90,13 @@ def delete_project(request):
     DB_project.objects.filter(id=id).delete()
     return HttpResponse('删除成功')
 
+# 新增项目
+def add_project(request):
+    project_name = request.GET['project_name']
+    project_otheruser = request.GET['project_otheruser']
+    project_remark = request.GET['project_remark']
+    DB_project.objects.create(name=project_name,remark=project_remark,other_user=project_otheruser,user=request.user.username)
+    return HttpResponse('新增成功')
 
 
 

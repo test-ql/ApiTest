@@ -33,6 +33,7 @@ urlpatterns = [
     path('help/', api_help),# 帮助
     path('project_list/', project_list),# 项目列表
     path('delete_project/', delete_project),# 删除项目
+    path('add_project/', add_project),# 新增项目
     path('interface/', interface),
 
 ]
