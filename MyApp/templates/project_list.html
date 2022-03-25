@@ -17,7 +17,7 @@
         <tr>
             {% for i in projects %}
             <tr>
-                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button class="btn btn-success">进入</button>&nbsp;&nbsp;<button class="btn btn-danger">删除</button></td>
+                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button class="btn btn-success">进入</button>&nbsp;&nbsp;<button onclick="delete_project('{{ i.id }}')" class="btn btn-danger">删除</button></td>
             </tr>
             {% endfor %}
 
@@ -25,5 +25,16 @@
 
         </tbody>
     </table>
+
+<script>
+    function delete_project(id) {
+        if(confirm("您确定要删除该项目吗？") == false){return}
+        $.get('/delete_project/',{
+            'id':id
+        },function (ret) {
+            document.location.reload()
+        })
+    }
+</script>
 </body>
 </html>

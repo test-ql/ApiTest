@@ -6,17 +6,21 @@ from django.contrib.auth.decorators import login_required
 from MyApp.models import *
 
 # Create your views here.
+# 欢迎页面
 @login_required
 def welcome(request):
     return render(request,'welcome.html')
 
+# 项目列表
 @login_required
 def project_list(request):
     return render(request,'welcome.html',{'whichHTML':'project_list.html','oid':''})
 
+# 接口库
 def interface(request):
     return render(request,'interface.html')
 
+# 帮助页面
 @login_required
 def api_help(request):
     return render(request,'welcome.html',{'whichHTML':'help.html','oid':''})
@@ -37,14 +41,16 @@ def child(request,eid,oid):
     res = child_json(eid)
     return render(request,eid,res)
 
-
+# 主页
 @login_required
 def home(request):
     return render(request,'welcome.html',{'whichHTML' : 'home.html',"oid":""})
 
+# 登录页面
 def login(request):
     return render(request,'login.html')
 
+# 登录
 def login_action(request):
     u_name = request.GET['username']
     p_word = request.GET['password']
@@ -56,6 +62,7 @@ def login_action(request):
     else:
         return HttpResponse('登录失败')
 
+# 用户注册
 def register_action(request):
     u_name = request.GET['username']
     p_word = request.GET['password']
@@ -66,14 +73,22 @@ def register_action(request):
     except:
         return HttpResponse('用户名已存在，注册失败！')
 
+# 用户退出
 def logout(request):
     auth.logout(request)
     return HttpResponseRedirect('/login/')
 
+# 吐槽
 def pei(request):
     tucao_text = request.GET['tucao_text']
     DB_tucao.objects.create(user=request.user.username,text=tucao_text)
     return HttpResponse('成功')
+
+# 删除项目
+def delete_project(request):
+    id = request.GET['id']
+    DB_project.objects.filter(id=id).delete()
+    return HttpResponse('删除成功')
 
 
 
