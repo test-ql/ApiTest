@@ -37,7 +37,8 @@ def child_json(eid,oid=''):
         return res
     if eid == 'P_apis.html':
         project = DB_project.objects.filter(id=oid)[0]
-        res = {'project':project}
+        apis = DB_apis.objects.filter(project_id=oid)
+        res = {'project':project,'apis':apis}
         return res
     if eid == 'P_cases.html':
         project = DB_project.objects.filter(id=oid)[0]
@@ -137,4 +138,30 @@ def save_project_set(request,id):
     DB_project.objects.filter(id=project_id).update(name=name,remark=remark,other_user=other_user)
     return HttpResponse('保存成功')
 
+# 新增接口
+def project_api_add(request,Pid):
+    project_id = Pid
+    DB_apis.objects.create(project_id=project_id)
+    DB_apis.objects.create(des='')
+    return HttpResponseRedirect('/apis/%s/'%project_id)
+
+# 删除接口
+def project_api_del(request,id):
+    project_id = DB_apis.objects.filter(id=id)[0].project_id
+    DB_apis.objects.filter(id=id).delete()
+    return HttpResponseRedirect('/apis/%s/'%project_id)
+
+# 保存备注
+def save_bz(request):
+    api_id = request.GET['api_id']
+    bz_value = request.GET['bz_value']
+    DB_apis.objects.filter(id=api_id).update(des=bz_value)
+    return HttpResponse('保存成功')
+
+# 获取备注
+def get_bz(request):
+    api_id = request.GET['api_id']
+    bz_value = DB_apis.objects.filter(id=api_id)[0].des
+    print(bz_value)
+    return HttpResponse(bz_value)
 

@@ -38,6 +38,10 @@ urlpatterns = [
     re_path(r'^cases/(?P<id>.*)/$',cases),# 用例设计
     re_path(r'^project_set/(?P<id>.*)/$',project_set),# 项目设置
     re_path(r'^save_project_set/(?P<id>.*)/$',save_project_set),# 保存项目设置
+    re_path(r'^project_api_add/(?P<Pid>.*)/$',project_api_add), # 新增接口
+    re_path(r'^project_api_del/(?P<id>.*)/$',project_api_del), # 删除接口
+    path('save_bz/',save_bz),# 保存备注
+    path('get_bz/',get_bz),# 获取备注
 
     path('interface/', interface),
 

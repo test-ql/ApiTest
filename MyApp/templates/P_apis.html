@@ -21,6 +21,74 @@
     </div>
     </div>
 </nav>
+<br><br>
+<table class="table table-bordered" style="color:black;background-color: white;opacity: 0.8;width: 80%;margin-left: 10%;position: relative;top: 80px">
+    <thead>
+        <tr>
+            <th>接口编号</th><th style="width: 20%">接口名称</th><th style="width: 40%">url</th><th style="width: 320px;">操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            {% for i in apis %}
+                <tr>
+                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.api_url }}</td><td><button class="btn-gradient green small">调试</button>
+                    <button onclick="open_bz({{ i.id }})" class="btn-gradient orange small">备注</button>
+                    <button class="btn-gradient orange small">复制</button>
+                    <button class="btn-gradient orange small">异常值测试</button>
+                    <button class="btn-gradient red small" onclick="document.location.href='/project_api_del/{{ i.id }}/'">删除</button></td>
+                </tr>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
 
+{#底部按钮#}
+<div style="position: fixed;bottom: 0px;width: 100%;background-color: #f8f8f8;text-align: center;border: 1px solid #e7e7e7">
+    <div class="btn-group">
+        <button type="button" class="btn-gradient green small" onclick="document.location.href='/project_api_add/{{ project.id }}/'">新增接口</button>
+        <button type="button" class="btn-gradient blue small">全局请求头</button>
+        <button type="button" class="btn-gradient blue small">全局域名</button>
+        <button type="button" class="btn-gradient blue small">接口文档导入</button>
+        <button type="button" class="btn-gradient blue small">抓包导入</button>
+        <button type="button" class="btn-gradient blue small">加密算法</button>
+        <button type="button" class="btn-gradient blue small">登录态接口</button>
+    </div>
+</div>
+
+{#备注弹框#}
+<div id="bz" style="display: none;width: 50%;height: 30%;position: fixed;left: 25%;top: 35%;background-color: #3c4043;box-shadow: 4px 4px 8px grey">
+    <input id="which_api" type="text" style="display: none">
+    <textarea id="bz_value" style="width: 100%;height: 80%" placeholder="请输入该接口备注"></textarea>
+    <button onclick="save_bz()" style="width: 49.9%;height: 20%">保存</button>
+    <button onclick="close_bz()" style="width: 49.5%;height: 20%">取消</button>
+</div>
+
+<script>
+    function open_bz(id) {
+
+        document.getElementById('bz_value').value = " ";
+        $.get('/get_bz/',{
+            'api_id':id
+        },function (ret) {
+            document.getElementById('bz').style.display='block';
+            document.getElementById('which_api').value = id;
+            document.getElementById('bz_value').value = ret;
+        })
+    }
+    function save_bz() {
+        id = document.getElementById('which_api').value;
+        bz_value = document.getElementById('bz_value').value;
+        $.get('/save_bz/',{
+            'api_id':id,
+            'bz_value':bz_value
+        },function (ret) {
+            document.getElementById('bz').style.display='none';
+        })
+    }
+    function close_bz() {
+        document.getElementById('bz').style.display='none';
+    }
+</script>
 </body>
 </html>

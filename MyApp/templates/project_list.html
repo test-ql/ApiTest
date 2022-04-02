@@ -6,18 +6,18 @@
 </head>
 <body>
 <br><br>
-<h3 style="padding-left: 10%;color: black">项目列表：<span style="font-size: small;color: black;">（这里显示全部项目,您可以进入他人的项目中查看）</span><button onclick="javascript:document.getElementById('add_project_div').style.display='block'" class="btn btn-info" style="position: absolute;left: -webkit-calc(90% - 85px)">新增项目</button></h3>
+<h3 style="padding-left: 10%;color: black">项目列表：<span style="font-size: small;color: black;">（这里显示全部项目,您可以进入他人的项目中查看）</span><button onclick="javascript:document.getElementById('add_project_div').style.display='block'" class="btn btn-info" style="position: relative;left: -webkit-calc(52%)">新增项目</button></h3>
     <table class="table table-bordered" style="color: black;background-color: white;opacity: 0.8;width: 80%;margin-left: 10%">
         <thead style="text-align: center">
             <tr>
-                <th>序号</th><th>项目名称</th><th>创建人</th><th>备注</th><th>操作</th>
+                <th>项目编号</th><th>项目名称</th><th>创建人</th><th>备注</th><th>操作</th>
             </tr>
         </thead>
         <tbody>
         <tr>
             {% for i in projects %}
             <tr>
-                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button onclick="javascript:document.location.href='/apis/{{ i.id }}/'" class="btn btn-success">进入</button>&nbsp;&nbsp;<button onclick="delete_project('{{ i.id }}')" class="btn btn-danger">删除</button></td>
+                <td>{{ i.id }}</td><td>{{ i.name }}</td><td>{{ i.user }}</td><td>{{ i.remark }}</td><td><button onclick="javascript:document.location.href='/apis/{{ i.id }}/'" class="btn-gradient green small">进入</button>&nbsp;&nbsp;<button onclick="delete_project('{{ i.id }}')" class="btn-gradient red small">删除</button></td>
             </tr>
             {% endfor %}
 
@@ -47,8 +47,8 @@
     <input  id="project_otheruser" type="text" placeholder="请输入" style="width: 80%"><br><br>
     <span style="position: relative;top: -51px">备&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;注：</span>
     <textarea id="project_remark" cols="30" rows="3" placeholder="请输入" style="width: 80%"></textarea><br><br>
-    <button onclick="javascript:document.getElementById('add_project_div').style.display='none'" class="btn btn-danger">取消</button>
-    <button onclick="add_project()" class="btn btn-success">确定</button><br><br>
+    <button onclick="javascript:document.getElementById('add_project_div').style.display='none'" class="btn-gradient red small">取消</button>
+    <button onclick="add_project()" class="btn-gradient green small">确定</button><br><br>
 </div>
 
 <script>
